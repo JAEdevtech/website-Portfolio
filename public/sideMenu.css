@@ -1,0 +1,32 @@
+:root {
+  --dark: #00fb;
+  --light: #fff;
+}
+
+.smenuContainer {
+  position: absolute;
+  display: flex;
+  left: 18rem;
+  top: 2rem;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 50vw;
+  background: linear-gradient(rgb(48, 180, 203), rgb(73, 218, 206));
+  border-radius: 1rem;
+}
+
+.smenuContainer:hover {
+  left: 10rem;
+  top: 2rem;
+  transition: 0.5s ease-in-out;
+}
+
+.sideLinks {
+  text-decoration: none;
+  list-style: none;
+  color: var(--light);
+}
+li {
+  padding: 3rem 1rem;
+}

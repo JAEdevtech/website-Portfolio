@@ -1,0 +1,116 @@
+:root {
+  --tile-expand: 0.5rem;
+  --speed: 200ms;
+  --ease: cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  width: max(90%, 48rem);
+  margin: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  --f: 0;
+  --bg: clamp(20, (0.5 - var(--f, 1)) * -9999, 80);
+
+  &:nth-child(4n+2):not(:nth-child(8n-2)), /* 2, 10, 18… */
+  &:nth-child(4n+4):not(:nth-child(8n)), /* 4, 12, 20… */
+  &:nth-child(4n+1):not(:nth-child(8n+1)), /* 5, 13, 21… */
+  &:nth-child(4n+3):not(:nth-child(8n+3)) {
+    /* 7, 15, 23… */
+    --f: 1;
+  }
+
+  z-index: 1;
+  position: relative;
+
+  display: block;
+  padding: calc(
+    var(--tile-expand, 1rem) + 1rem
+  ); /* Add extra padding so a neibouring card's hover doesn't touch the content */
+
+  color: hsl(0 0% calc((1 - var(--f, 1)) * 100%));
+  background-color: hsl(var(--hue, 0) 50% calc(var(--bg) * 1%));
+
+  transition: z-index var(--speed, 300ms) var(--ease, ease);
+
+  /* For maximum compatibility, you can duplicate this rule with individual selectors */
+  &:hover,
+  &:focus-within {
+    z-index: 10;
+  }
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    top: calc(var(--tile-expand, 1rem) * -1);
+    bottom: calc(var(--tile-expand, 1rem) * -1);
+    left: calc(var(--tile-expand, 1rem) * -1);
+    right: calc(var(--tile-expand, 1rem) * -1);
+    z-index: -1;
+
+    width: calc(100% + var(--tile-expand, 1rem) * 2);
+    height: calc(100% + var(--tile-expand, 1rem) * 2);
+
+    background: inherit;
+
+    clip-path: polygon(
+      var(--tile-expand, 1rem) var(--tile-expand, 1rem),
+      calc(100% - var(--tile-expand, 1rem)) var(--tile-expand, 1rem),
+      calc(100% - var(--tile-expand, 1rem))
+        calc(100% - var(--tile-expand, 1rem)),
+      var(--tile-expand, 1rem) calc(100% - var(--tile-expand, 1rem))
+    );
+
+    transition: clip-path var(--speed, 300ms) var(--ease, ease);
+  }
+
+  /* For maximum compatibility, you can duplicate this rule with individual selectors */
+  &:hover::before,
+  &:focus-within::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  & > * {
+    margin: 0;
+  }
+  & > * + * {
+    margin-top: 1em;
+  }
+
+  /* Force the card to be fully clickable */
+  /* This has accessibility implications you can solve with solutions like this one: https://inclusive-components.design/cards/ */
+  & a {
+    display: block;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+/* Just to make things a bit prettier */
+body {
+  display: grid;
+  place-items: center;
+  min-height: 70vh;
+
+  background-color: darkslateblue;
+}
+
+a {
+  text-transform: uppercase;
+  letter-spacing: 0.0625em;
+  color: currentColor;
+}
