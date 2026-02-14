@@ -1,7 +1,8 @@
 :root {
-  --background: #111111;
+  --background: #060608;
   --color: #fff;
 }
+
 body {
   display: flex;
   align-items: center;
@@ -201,7 +202,7 @@ header {
 .content-container {
   display: block;
   justify-content: center;
-  /* max-width: 1140px; */
+  width: 100%; 
 }
 .hero {
   background: url(./resourses/potential\ hazard\ astroids_jpl_3254.jpg);
@@ -211,7 +212,8 @@ header {
   z-index: -99999;
 }
 .hero-container {
-  max-width: 256px;
+  width: 100% 
+  //max-width: 256px;
   padding: 5.5rem 2rem 1rem 2rem;
   display: flex;
   flex-direction: column;
@@ -234,7 +236,6 @@ header {
 }
 
 .text-container {
-  max-width: 256px;
   padding: 2.5rem 2rem 1rem 2rem;
   display: flex;
   flex-direction: column;
@@ -327,11 +328,11 @@ button:active {
 h1 {
   font-family: "Montserrat";
   font-weight: 100;
-  font-size: x-small;
+  font-size: small;
 }
 
 h2 {
-  font-size: medium;
+  font-size: large;
   letter-spacing: 0.4rem;
 }
 
@@ -339,7 +340,7 @@ h2,
 h3 {
   font-family: "Montserrat";
   font-weight: 200;
-  padding: 0.6rem 0;
+  padding: 0 20%;
 }
 
 .h3-wrap {
@@ -361,11 +362,18 @@ h3 {
   justify-content: center;
   align-items: center;
   height: 20.1rem;
-  /* width: 70vw; */
-  margin: 1.5rem 1.5rem 0 1.5rem;
-  border-radius: 1rem;
+  width: 100%;
+  //padding: 0 -55rem 0 -55rem;
+  //margin: 1.5rem 1.5rem 0 1.5rem;
+  //border-radius: 90rem;
 }
-
+.project-container {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	width: 300px ;
+        height: 300px;
+}
 /* project description */
 .description-container {
   width: auto;
@@ -383,7 +391,7 @@ h3 {
     height: 100%;
     /* Add your background pattern here */
     background: rgba(29, 31, 32, 0.904)
-      radial-gradient(rgba(255, 255, 255, 0.712) 10%, transparent 1%);
+    radial-gradient(rgba(255, 255, 255, 0.712) 10%, transparent 1%);
     background-size: 11px 11px;
     filter: blur(0.1rem);
   }

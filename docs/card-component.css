@@ -14,6 +14,7 @@
 
 .card,
 .card-info {
+  
   z-index: 2;
 }
 
@@ -30,38 +31,8 @@
   background: var(--background);
 }
 
-.card::after {
-  position: absolute;
-  content: "";
-  top: -22px;
-  left: 0px;
-  right: 0;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  transform: scale(0.76);
-  filter: blur(34.5px);
-  background: var(--background);
-  transition: opacity 0.5s;
-}
-
-.card2::after {
-  position: absolute;
-  content: "";
-  top: -22px;
-  left: 0px;
-  right: 0;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  transform: scale(0.76);
-  filter: blur(34.5px);
-  background: var(--background);
-  transition: opacity 0.5s;
-}
-
-.card3::after {
-  position: absolute;
+.card::after,.card2::after,card3::after {
+  position: relative;
   content: "";
   top: -22px;
   left: 0px;
@@ -90,33 +61,14 @@
   border-radius: 0.7rem;
 }
 
-.card .title {
+.card .title,card2 .title,card3 .title {
   font-weight: light;
   letter-spacing: 0.2em;
 }
-.card2 .title {
-  font-weight: light;
-  letter-spacing: 0.2em;
-}
-.card3 .title {
-  font-weight: light;
-  letter-spacing: 0.2em;
-}
+
 /*Hover*/
-.card:hover::after {
-  opacity: 0.6;
-  padding: 0.7rem 0;
-  top: 18px;
-  transition: 0.6s;
-}
-
-.card2:hover::after {
-  opacity: 0.6;
-  padding: 0.7rem 0;
-  top: 18px;
-  transition: 0.6s;
-}
-
+.card:hover::after, 
+.card2:hover::after, 
 .card3:hover::after {
   opacity: 0.6;
   padding: 0.7rem 0;
@@ -125,70 +77,12 @@
 }
 
 .card:hover,
-:focus-within .card-info {
+:focus-within .card-info, .card2:hover,
+:focus-within .card-info2, .card3:hover,
+:focus-within .card-info3{
   transform: scale(1.1);
   transition: all 0.2s ease-in-out;
   color: #fff9f9;
   transition: color 1s;
   z-index: 999;
-}
-
-.card2:hover,
-:focus-within .card-info2 {
-  transform: scale(1.1);
-  transition: all 0.2s ease-in-out;
-  color: #fff9f9;
-  transition: color 1s;
-  z-index: 999;
-}
-
-.card3:hover,
-:focus-within .card-info3 {
-  transform: scale(1.1);
-  transition: all 0.2s ease-in-out;
-  color: #fff9f9;
-  transition: color 1s;
-  z-index: 999;
-}
-@media only screen and (min-width: 375px) and (max-width: 424px) {
-  .card,
-  .card2,
-  .card3 {
-    position: absolute;
-    --background: linear-gradient(to right, #13b37f 10%, #11a3c8 100%);
-    width: calc(140px * 1.1);
-    height: calc(200px * 1.1);
-    padding: 0.9px;
-    border-radius: 0.7rem;
-    overflow: visible;
-    background: var(--background);
-  }
-}
-@media only screen and (min-width: 425px) and (max-width: 767px) {
-  .card,
-  .card2,
-  .card3 {
-    position: absolute;
-    --background: linear-gradient(to right, #13b37f 10%, #11a3c8 100%);
-    width: calc(140px * 1.2);
-    height: calc(200px * 1.2);
-    padding: 0.9px;
-    border-radius: 0.7rem;
-    overflow: visible;
-    background: var(--background);
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .card,
-  .card2,
-  .card3 {
-    position: absolute;
-    --background: linear-gradient(to right, #13b37f 10%, #11a3c8 100%);
-    width: calc(140px * 1.5);
-    height: calc(200px * 1.5);
-    padding: 0.9px;
-    border-radius: 0.7rem;
-    overflow: visible;
-    background: var(--background);
-  }
 }
